@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Script to regenerate resume renders when resume.yaml changes
+# Used by pre-commit hook
+
+set -e
+
+echo "Regenerating resume renders..."
+
+# Run rendercv to generate the resume
+if ! rendercv render resume.yaml; then
+    echo "ERROR: Failed to render resume."
+    exit 1
+fi
+
+# Add generated files to git
+if [ -d "rendered" ]; then
+    git add rendered/
+fi
+
+echo "Resume renders updated successfully."

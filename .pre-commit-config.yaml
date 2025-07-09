@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: render-resume
+        name: Render Resume
+        entry: bin/render-resume
+        language: script
+        files: ^resume\.yaml$
+        always_run: false
